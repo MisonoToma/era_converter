@@ -3,9 +3,9 @@
 <package format="3">
   <name>era_converter</name>
   <version>0.0.0</version>
-  <description>TODO: Package description</description>
-  <maintainer email="s24c1115dv@s.chibakoudai.jp">mison</maintainer>
-  <license>TODO: License declaration</license>
+  <description>西暦を変換</description>
+  <maintainer email="s24c1115dv@s.chibakoudai.jp">MisonoToma</maintainer>
+  <license>BSD-3-Clause</license>
 
   <test_depend>ament_copyright</test_depend>
   <test_depend>ament_flake8</test_depend>
