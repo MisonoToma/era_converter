@@ -20,7 +20,8 @@ setup(
 
     entry_points={
         'console_scripts': [
-            'era_node = era_converter.era_publisher:main',
+            'era_publisher = era_converter.era_publisher:main',
+            'era_subscriber = era_converter.era_subscriber:main',
         ],
     },
 )
