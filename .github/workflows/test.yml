@@ -1,0 +1,32 @@
+name: test
+
+on: push
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    container:
+      image: ghcr.io/ros-tooling/setup-ros:humble
+
+    steps:
+      - name: checkout code
+        uses: actions/checkout@v3
+      - name: Setup ROS 2 environment
+        run: |
+          source /opt/ros/humble/setup.bash
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y python3-colcon-common-extensions
+      - name: Build workspace
+        run: |
+          source /opt/ros/humble/setup.bash
+          colcon build --symlink-install
+      - name: Source workspace
+        run: |
+          source install/setup.bash
+      - name: Run user test script
+        run: |
+          chmod +x ./test.bash
+          bash -xv ./test.bash
