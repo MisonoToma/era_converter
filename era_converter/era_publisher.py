@@ -3,30 +3,31 @@
 # SPDX-License-Identifier: BSD-3-Clause
 import rclpy
 from rclpy.node import Node
-from person_msgs.msg import Person
+from std_msgs.msg import Int32
+
 
 class EraPublisher(Node):
     def __init__(self):
         super().__init__('era_publisher')
-        self.publisher_ = self.create_publisher(Person, 'year', 10)
-        self.year = 1926
+        self.publisher_ = self.create_publisher(Int32, 'year', 10)
         self.timer = self.create_timer(1.0, self.timer_callback)
+        self.year = 1926
 
     def timer_callback(self):
-        msg = Person()
-        msg.name = 'year'
-        msg.age = self.year
+        msg = Int32()
+        msg.data = self.year
         self.publisher_.publish(msg)
         self.get_logger().info(f'Publish: {self.year}')
+
         self.year += 1
-        if self.year > 2025:
+        if self.year > 2026:
             self.year = 1926
 
-def main(args=None):
-    rclpy.init(args=args)
+
+def main():
+    rclpy.init()
     node = EraPublisher()
     rclpy.spin(node)
+    node.destroy_node()
     rclpy.shutdown()
 
-if __name__ == '__main__':
-    main()
