@@ -8,6 +8,11 @@ jobs:
       - uses: actions/checkout@v2
       - name: build and test
         run: |
-          rsync -av ./ /root/ros2_ws/src/era_converter/
+          rsync -av \
+            --exclude build \
+            --exclude install \
+            --exclude log \
+            --exclude __pyache__ \
+            ./ /root/ros2_ws/src/era_converter/
           cd /root/ros2_ws
           bash -xv ./src/era_converter/test/test.bash /root
