@@ -1,16 +1,13 @@
 name: test
 on: push
-
 jobs:
   test:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
+    container: ryuichiueda/ubuntu24.04-ros2:latest
     steps:
-      - uses: actions/checkout@v4
-
-      - name: Setup ROS 2
-        uses: ros-tooling/setup-ros@v0.7
-        with:
-          distribution: jazzy
-
-      - name: Run test
-        run: bash -xv ./test/test.bash
+      - uses: actions/checkout@v2
+      - name: build and test
+        run: |
+          rsync -av ./ /root/ros2_ws/src/era_converter/
+          cd /root/ros2_ws
+          bash -xv ./src/era_converter/test/test.bash /root
