@@ -13,4 +13,4 @@ jobs:
           distribution: jazzy
 
       - name: Run test
-        run: bash -xv ./test.bash
+        run: bash -xv ./test/test.bash
