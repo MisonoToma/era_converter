@@ -14,10 +14,10 @@ class EraPublisher(Node):
 
     def timer_callback(self):
         msg = Person()
-        msg.year = self.year
+        msg.name = 'year'
+        msg.age = self.year
         self.publisher_.publish(msg)
         self.get_logger().info(f'Publish: {self.year}')
-
         self.year += 1
         if self.year > 2025:
             self.year = 1926

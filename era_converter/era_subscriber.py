@@ -3,7 +3,6 @@
 # SPDX-License-Identifier: BSD-3-Clause
 import rclpy
 from rclpy.node import Node
-
 from person_msgs.msg import Person
 
 class EraSubscriber(Node):
@@ -17,15 +16,13 @@ class EraSubscriber(Node):
         )
 
     def listener_callback(self, msg):
-        year = msg.year
-        era = ""
-
+        year = msg.age
         if 1926 <= year <= 1988:
-            era = f"昭和{year-1925}年"
+            era = f"昭和{year - 1925}年"
         elif 1989 <= year <= 2018:
-            era = f"平成{year-1988}年"
+            era = f"平成{year - 1988}年"
         elif 2019 <= year <= 2025:
-            era = f"令和{year-2018}年"
+            era = f"令和{year - 2018}年"
         else:
             era = "対象外"
 
