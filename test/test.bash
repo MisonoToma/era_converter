@@ -7,7 +7,7 @@ dir=~
 
 cd $dir/ros2_ws
 colcon build
-source /opt/ros/jazzy/setup.bash
+source /opt/ros/humble/setup.bash
 source install/setup.bash
 timeout 10 ros2 launch era_converter era.launch.py > /tmp/era_converter.log
 
