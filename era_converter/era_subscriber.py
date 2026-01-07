@@ -13,7 +13,7 @@ class EraSubscriber(Node):
             Int32,
             'year',
             self.callback,
-            1
+            10
         )
 
     def callback(self, msg):

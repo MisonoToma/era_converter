@@ -19,7 +19,7 @@ class EraPublisher(Node):
         self.publisher_.publish(msg)
         self.get_logger().info(f'Publish: {self.year}')
 
-        self.year += 10
+        self.year += 1
         if self.year > 2026:
             self.year = 1926
 
